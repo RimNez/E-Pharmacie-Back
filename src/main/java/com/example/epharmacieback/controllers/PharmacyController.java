@@ -3,6 +3,8 @@ package com.example.epharmacieback.controllers;
 import com.example.epharmacieback.models.Pharmacy;
 import com.example.epharmacieback.service.PharmacieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,9 +26,9 @@ public class PharmacyController {
         return pharmacieService.save(pharmacy, idAdmin);
     }
 
-    @PutMapping("/update/{id}")
-    public boolean update(@RequestBody Pharmacy pharmacy,@PathVariable("id") Long id) {
-        return pharmacieService.update(pharmacy, id);
+    @PutMapping("/update")
+    public boolean update(@RequestBody Pharmacy pharmacy) {
+        return pharmacieService.update(pharmacy);
     }
 
     @GetMapping("/{id}")
@@ -35,7 +37,8 @@ public class PharmacyController {
     }
 
     @DeleteMapping("/delete")
-    public void delete(@RequestBody Pharmacy pharmacy) {
+    public ResponseEntity<?> delete(@RequestBody Pharmacy pharmacy) {
         pharmacieService.delete(pharmacy);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

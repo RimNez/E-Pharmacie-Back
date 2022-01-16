@@ -30,7 +30,7 @@ public class PharmacieService{
         } else return false;
     }
 
-    public boolean update(Pharmacy pharmacy, Long id) {
+    public boolean update(Pharmacy pharmacy) {
         Pharmacy p = pharmacyDao.findById(pharmacy.getId()).get();
         if (p != null) {
             p.setNom(pharmacy.getNom());
