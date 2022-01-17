@@ -5,29 +5,28 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.AbstractList;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Admin {
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String login;
     private String password;
     private String email;
-    @OneToMany(targetEntity = Pharmacy.class, /*fetch = FetchType.EAGER,*/ mappedBy = "admin")
-    @JsonManagedReference(value = "admin-ref")
+    @OneToMany(targetEntity = Pharmacy.class)
+    @JsonManagedReference(value = "user-ref")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Pharmacy> pharmacies;
 
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getLogin() {
@@ -60,16 +59,5 @@ public class Admin {
 
     public void setPharmacies(List<Pharmacy> pharmacies) {
         this.pharmacies = pharmacies;
-    }
-
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", pharmacies=" + pharmacies +
-                '}';
     }
 }

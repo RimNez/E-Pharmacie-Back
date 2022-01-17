@@ -15,8 +15,20 @@ public class Pharmacy {
     private String tel;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "admin_id")
-    @JsonBackReference
+    @JsonBackReference(value = "admin-ref")
     private Admin admin;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "pharmacien_id")
+    @JsonBackReference(value = "pharmacien-ref")
+    private Pharmacien pharmacien;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true, name = "user_id")
+    @JsonBackReference(value = "user-ref")
+    private User user;
+
+
 
     public Pharmacy() {
     }
@@ -63,6 +75,22 @@ public class Pharmacy {
 
     public Admin getAdmin() {
         return admin;
+    }
+
+    public Pharmacien getPharmacien() {
+        return pharmacien;
+    }
+
+    public void setPharmacien(Pharmacien pharmacien) {
+        this.pharmacien = pharmacien;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setAdmin(Admin admin) {

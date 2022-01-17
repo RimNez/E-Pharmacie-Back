@@ -1,8 +1,6 @@
 package com.example.epharmacieback.controllers;
 
-import com.example.epharmacieback.models.Admin;
 import com.example.epharmacieback.models.Pharmacien;
-import com.example.epharmacieback.service.PharmacieService;
 import com.example.epharmacieback.service.PharmacienService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +22,11 @@ public class PharmacienController {
     @PostMapping("/")
     public Pharmacien save(@RequestBody Pharmacien entity) {
         return service.save(entity);
+    }
+
+    @PostMapping("/add")
+    public Pharmacien addPharmacies(@RequestBody Pharmacien pharmacien) {
+        return service.addPharmacie(pharmacien);
     }
 
     @GetMapping("/{id}")

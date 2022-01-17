@@ -1,6 +1,8 @@
 package com.example.epharmacieback.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,8 +15,9 @@ public class Pharmacien {
     private String login;
     private String password;
     private String email;
-    @OneToMany(targetEntity = Pharmacy.class, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @OneToMany(targetEntity = Pharmacy.class)
+    @JsonManagedReference(value = "pharmacien-ref")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Pharmacy> pharmacies;
 
     public void setId(Long id) {
