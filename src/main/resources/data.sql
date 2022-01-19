@@ -1,0 +1,1 @@
+Insert into admin (id,login,email,password) values (1,'admin','admin@admin.com','admin');
