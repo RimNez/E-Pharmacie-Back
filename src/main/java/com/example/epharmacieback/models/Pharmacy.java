@@ -1,8 +1,12 @@
 package com.example.epharmacieback.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Pharmacy {
@@ -13,12 +17,22 @@ public class Pharmacy {
     private String adresse;
     private String patente;
     private String tel;
+    @OneToMany(targetEntity = Pharmacy.class)
+    @JsonManagedReference(value = "medicament-ref")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Medicament> medicaments;
+
+    @OneToMany(targetEntity = Pharmacy.class)
+    @JsonManagedReference(value = "pharmacy-ref")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Commande> commandes;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "admin_id")
     @JsonBackReference(value = "admin-ref")
     private Admin admin;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    /*@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "pharmacien_id")
     @JsonBackReference(value = "pharmacien-ref")
     private Pharmacien pharmacien;
@@ -26,7 +40,7 @@ public class Pharmacy {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = true, name = "user_id")
     @JsonBackReference(value = "user-ref")
-    private User user;
+    private User user;*/
 
 
 
@@ -75,22 +89,6 @@ public class Pharmacy {
 
     public Admin getAdmin() {
         return admin;
-    }
-
-    public Pharmacien getPharmacien() {
-        return pharmacien;
-    }
-
-    public void setPharmacien(Pharmacien pharmacien) {
-        this.pharmacien = pharmacien;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public void setAdmin(Admin admin) {

@@ -1,30 +1,30 @@
 package com.example.epharmacieback.service;
 
-import com.example.epharmacieback.dao.UserDao;
-import com.example.epharmacieback.models.User;
+import com.example.epharmacieback.dao.MedicamentDao;
+import com.example.epharmacieback.models.Medicament;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService {
+public class MedicamentService {
     @Autowired
-    private UserDao dao;
+    private MedicamentDao dao;
 
-    public List<User> findAll() {
+    public List<Medicament> findAll() {
         return dao.findAll();
     }
 
-    public User save(User entity) {
+    public Medicament save(Medicament entity) {
         return dao.save(entity);
     }
 
-    public User findById(Long aLong) {
+    public Medicament findById(Long aLong) {
         return dao.findById(aLong).get();
     }
 
-    public void delete(User entity) {
+    public void delete(Medicament entity) {
         dao.delete(entity);
     }
 }

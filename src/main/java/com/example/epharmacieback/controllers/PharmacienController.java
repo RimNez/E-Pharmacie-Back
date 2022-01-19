@@ -35,7 +35,7 @@ public class PharmacienController {
     }
 
     @DeleteMapping("/delete")
-    public void delete(Pharmacien entity) {
+    public void delete(@RequestBody Pharmacien entity) {
         service.delete(entity);
     }
 }

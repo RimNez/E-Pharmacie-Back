@@ -17,9 +17,9 @@ public class User {
     private String password;
     private String email;
     @OneToMany(targetEntity = Pharmacy.class)
-    @JsonManagedReference(value = "user-ref")
+    @JsonManagedReference(value = "commande-ref")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Pharmacy> pharmacies;
+    private List<Commande> commandes;
 
     public void setId(Long id) {
         this.id = id;
@@ -53,11 +53,11 @@ public class User {
         this.email = email;
     }
 
-    public List<Pharmacy> getPharmacies() {
-        return pharmacies;
+    public List<Commande> getCommandes() {
+        return commandes;
     }
 
-    public void setPharmacies(List<Pharmacy> pharmacies) {
-        this.pharmacies = pharmacies;
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 }

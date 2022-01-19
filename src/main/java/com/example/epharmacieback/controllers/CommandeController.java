@@ -1,7 +1,7 @@
 package com.example.epharmacieback.controllers;
 
-import com.example.epharmacieback.models.User;
-import com.example.epharmacieback.service.UserService;
+import com.example.epharmacieback.models.Commande;
+import com.example.epharmacieback.service.CommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,28 +9,28 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/user")
-public class UserController {
-
+@RequestMapping("/api/commande")
+public class CommandeController {
     @Autowired
-    private UserService service;
+    private CommandeService service;
 
     @GetMapping("/")
-    public List<User> findAll() {
+    public List<Commande> findAll() {
         return service.findAll();
     }
 
     @PostMapping("/")
-    public User save(@RequestBody User entity) {
+    public Commande save(@RequestBody Commande entity) {
         return service.save(entity);
     }
+
     @GetMapping("/{id}")
-    public User findById(@PathVariable("id")  Long aLong) {
+    public Commande findById(@PathVariable("id") Long aLong) {
         return service.findById(aLong);
     }
 
     @DeleteMapping("/delete")
-    public void delete(@RequestBody User entity) {
+    public void delete(@RequestBody Commande entity) {
         service.delete(entity);
     }
 }

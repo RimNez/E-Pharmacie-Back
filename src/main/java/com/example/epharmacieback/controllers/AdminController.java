@@ -30,7 +30,7 @@ public class AdminController {
     }
 
     @DeleteMapping("/delete")
-    public void delete(Admin entity) {
+    public void delete(@RequestBody Admin entity) {
         service.delete(entity);
     }
 }
