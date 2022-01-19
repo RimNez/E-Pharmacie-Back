@@ -13,7 +13,7 @@ public class Medicament {
     private String description;
     private String prix;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "pharmacy_id")
+    @JoinColumn(nullable = true, name = "pharmacy_id")
     @JsonBackReference(value = "medicament-ref")
     private Pharmacy pharmacy;
 

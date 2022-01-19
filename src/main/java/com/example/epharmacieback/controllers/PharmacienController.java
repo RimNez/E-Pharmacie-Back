@@ -24,10 +24,10 @@ public class PharmacienController {
         return service.save(entity);
     }
 
-    @PostMapping("/add")
+    /*@PostMapping("/add")
     public Pharmacien addPharmacies(@RequestBody Pharmacien pharmacien) {
         return service.addPharmacie(pharmacien);
-    }
+    }*/
 
     @GetMapping("/{id}")
     public Pharmacien findById(@PathVariable("id") Long aLong) {

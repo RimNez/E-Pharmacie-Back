@@ -29,7 +29,7 @@ public class Commande {
     private User user;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = true, name = "user_id")
+    @JoinColumn(nullable = true, name = "pharmacy_id")
     @JsonBackReference(value = "pharmacy-ref")
     private Pharmacy pharmacy;
 

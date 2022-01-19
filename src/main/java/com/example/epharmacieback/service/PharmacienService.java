@@ -21,7 +21,7 @@ public class PharmacienService {
         return dao.findAll();
     }
 
-    public Pharmacien addPharmacie(Pharmacien pharmacien){
+    /*public Pharmacien addPharmacie(Pharmacien pharmacien){
         Pharmacien p = dao.findById(pharmacien.getId()).get();
         List<Pharmacy> pharmacies = pharmacien.getPharmacies();
 
@@ -29,7 +29,7 @@ public class PharmacienService {
         dao.save(p);
         pharmacies.forEach( pharmacy -> pharmacyDao.save(pharmacy) );
         return dao.findById(pharmacien.getId()).get();
-    }
+    }*/
 
     public Pharmacien save(Pharmacien entity) {
         return dao.save(entity);
