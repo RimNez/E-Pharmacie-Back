@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PharmacyDao extends JpaRepository<Pharmacy,Long> {
+    Pharmacy findByNomAndPatente(String nom, String patente);
 }

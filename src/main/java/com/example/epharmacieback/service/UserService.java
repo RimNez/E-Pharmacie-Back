@@ -27,4 +27,8 @@ public class UserService {
     public void delete(User entity) {
         dao.delete(entity);
     }
+
+    public User findByEmailAndPassword(User user) {
+        return dao.findByEmailAndPassword(user.getEmail(),user.getPassword());
+    }
 }

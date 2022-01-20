@@ -17,9 +17,9 @@ public class Pharmacy {
     private String adresse;
     private String patente;
     private String tel;
-    @OneToMany(targetEntity = Pharmacy.class)
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "pharmacy")
     @JsonManagedReference(value = "medicament-ref")
-    @LazyCollection(LazyCollectionOption.FALSE)
+    //@LazyCollection(LazyCollectionOption.FALSE)
     private List<Medicament> medicaments;
 
     @OneToMany(targetEntity = Pharmacy.class)
@@ -93,6 +93,22 @@ public class Pharmacy {
 
     public void setAdmin(Admin admin) {
         this.admin = admin;
+    }
+
+    public List<Medicament> getMedicaments() {
+        return medicaments;
+    }
+
+    public void setMedicaments(List<Medicament> medicaments) {
+        this.medicaments = medicaments;
+    }
+
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 
     @Override

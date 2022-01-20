@@ -1,6 +1,7 @@
 package com.example.epharmacieback.controllers;
 
 import com.example.epharmacieback.models.Pharmacy;
+import com.example.epharmacieback.models.User;
 import com.example.epharmacieback.service.PharmacieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,11 @@ import java.util.List;
 public class PharmacyController {
     @Autowired
     private PharmacieService pharmacieService;
+
+    @PostMapping("/login")
+    public Pharmacy login (@RequestBody Pharmacy pharmacy) {
+        return pharmacieService.findByNomAndPatente(pharmacy);
+    }
 
     @GetMapping("/")
     public List<Pharmacy> findAll() {

@@ -15,6 +15,11 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @PostMapping("/login")
+    public User login (@RequestBody User user) {
+        return service.findByEmailAndPassword(user);
+    }
+
     @GetMapping("/")
     public List<User> findAll() {
         return service.findAll();

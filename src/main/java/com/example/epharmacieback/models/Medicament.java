@@ -11,8 +11,8 @@ public class Medicament {
     private Long id;
     private String nom;
     private String description;
-    private String prix;
-    @ManyToOne(fetch = FetchType.EAGER)
+    private Float prix;
+    @ManyToOne(fetch = FetchType.EAGER,targetEntity=Pharmacy.class)
     @JoinColumn(nullable = true, name = "pharmacy_id")
     @JsonBackReference(value = "medicament-ref")
     private Pharmacy pharmacy;
@@ -46,11 +46,11 @@ public class Medicament {
         this.description = description;
     }
 
-    public String getPrix() {
+    public Float getPrix() {
         return prix;
     }
 
-    public void setPrix(String prix) {
+    public void setPrix(Float prix) {
         this.prix = prix;
     }
 

@@ -17,6 +17,10 @@ public class PharmacieService{
     @Autowired
     private AdminDao adminDao;
 
+    public Pharmacy findByNomAndPatente(Pharmacy pharmacy) {
+        return pharmacyDao.findByNomAndPatente(pharmacy.getNom(), pharmacy.getPatente());
+    }
+
     public List<Pharmacy> findAll() {
         return pharmacyDao.findAll();
     }
